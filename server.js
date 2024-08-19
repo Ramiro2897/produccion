@@ -81,7 +81,7 @@ io.on('connection', async (socket) => {
          // Obtener la UCU actualizada
          const result = await db.query('SELECT * FROM ucu WHERE id = $1', [id]);
          const updatedUcu = result.rows[0];
-         socket.emit('ucuCompleted', updatedUcu);
+         io.emit('ucuCompleted', updatedUcu);
 
         // Obtener el porcentaje de completado
         const allUcusResult = await db.query('SELECT * FROM ucu');
@@ -99,8 +99,6 @@ io.on('connection', async (socket) => {
         console.error('Error al completar la UCU:', error);
     }
 });
-
-
 
   // Función para obtener el número total de UCUs
   async function getTotalUcus() {

@@ -55,7 +55,7 @@ document.querySelectorAll('.completeButton').forEach(button => {
 socket.on('ucuCompleted', (updatedUcu) => {
     const row = document.querySelector(`tr[data-id="${updatedUcu.id}"]`);
     if (row) {
-        row.style.backgroundColor = '#a5d6a7'; // Cambia el color de la fila para indicar que está completada
+        row.style.backgroundColor = '#a5d6a7'; 
     }
 });
 
