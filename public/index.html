@@ -3,18 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List</title>
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" href="/ico.jpeg" type="image/x-icon">
+  <title>Coberturas UC CENU</title>
 </head>
 <body>
-  <div class="container">
-    <h1>To-Do List</h1>
-    <form id="taskForm">
-      <input type="text" id="taskInput" name="task" placeholder="Nueva tarea..." required>
-      <button type="submit">Agregar</button>
-    </form>
-    <ul id="taskList"></ul>
+  <h4>Unidades de cobertura</h4>
+  <span id="totalUCUs">Total UCUS</span>
+  <div id="visitCount">Número de visitas: 0</div>
+  <div id="completionPercentage">Porcentaje completado: 0%</div>
+  <div class="group">
+    Grupo: Daniela, Narly, Iriana, Emiro, Ramiro
   </div>
-  <script src="/js/scripts.js"></script>
+
+
+  <div class="add_ucu">
+    <button id="openModalButton">
+      <i class="fas fa-plus"></i> Añadir UCU
+    </button>
+  </div>
+
+  <div class="recuentistas">
+    <button class="recuentistaButton" data-recuentista="Narly">Narly <span></span></button>
+    <button class="recuentistaButton" data-recuentista="Iriana">Iriana <span></span></button>
+    <button class="recuentistaButton" data-recuentista="Emiro">Emiro <span></span></button>
+    <button class="recuentistaButton" data-recuentista="Ramiro">Ramiro <span></span></button>
+  </div>
+  
+
+  <!-- modal de ucu, agregar -->
+  <div class="modal_add__ucu" style="display: none;">
+    <span id="closeButton"><i class="fas fa-times"></i></span>
+    <input type="text" id="itemInput" placeholder="Número UCU" required maxlength="6">
+    <input type="number" id="cuotasInput" placeholder="Cuotas" required max="99" min="0">
+    <input type="text" id="barrioInput" placeholder="Barrio" required maxlength="50">
+    <input type="text" id="referenciaInput" placeholder="Punto de referencia" required maxlength="50">
+    <div class="select-container">
+      <select id="recountistInput" required>
+        <option value="">Seleccione el recuentista</option>
+        <option value="Ramiro">Ramiro</option>
+        <option value="Iriana">Iriana</option>
+        <option value="Narly">Narly</option>
+        <option value="Emiro">Emiro</option>
+      </select>      
+    </div>    
+    <button id="addButton">Agregar</button>
+  </div>
+
+<!-- lista de unidades de coberturas con sus datos -->
+<div class="lista_ucu">
+  <table>
+    <thead>
+      <tr>
+        <th>Número UCU</th>
+        <th>Cuotas</th>
+        <th>Barrio</th>
+        <th>Punto ref...</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="ucuTableBody">
+      <!-- Las filas se agregarán dinámicamente aquí -->
+    </tbody>
+  </table>
+</div>
+
+<div class="copyright"></div>
+
+  
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/scripts.js"></script>
 </body>
 </html>
